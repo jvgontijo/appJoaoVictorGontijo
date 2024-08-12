@@ -1,0 +1,15 @@
+User {
+id: df781120-707f-401e-9042-2d2815436a6a
+name: John Doe
+age: 30
+email: john@example.com
+character: character1.txt
+character: character2.txt
+}
+User {
+id: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Jane Smith
+age: 25
+email: jane@example.com
+character: character3.txt
+}
