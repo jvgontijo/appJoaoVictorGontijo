@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,13 +17,14 @@ public class Character extends Person {
 
     private UUID userId;
 
-    private List<Weapon> weapons;
+    private List<Weapon> weapons = new ArrayList<>();
 
-    private Appearance appearance;
+    private Appearance appearance = new Appearance();
 
     private boolean isBrought = false;
 
-    public Character() {}
+    public Character() {
+    }
 
     public Character(List<Weapon> weapons, Appearance appearance) {
         super();
@@ -51,7 +53,9 @@ public class Character extends Person {
     @Override
     public String toString() {
         return "Character { " + "\n" +
-                "name: " + this.getName() +
+                "userId: " + this.getUserId() + "\n" +
+                "id: " + this.getId() +
+                ", name: " + this.getName() +
                 ", age: " + this.getAge() +
                 ", creationDate: " + this.creationDate +
                 ", weapons: " + this.weapons +
