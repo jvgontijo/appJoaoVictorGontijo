@@ -1,0 +1,111 @@
+Character {
+userId: df781120-707f-401e-9042-2d2815436a6a
+name: Frodo Baggins
+age: 50
+weapon: DAGGER
+hairColor: Brown
+eyeColor: Blue
+height: 1.20
+weight: 33.0
+isVisible: true
+}
+Character {
+userId: df781120-707f-401e-9042-2d2815436a6a
+name: Samwise Gamgee
+age: 38
+weapon: DAGGER
+hairColor: Brown
+eyeColor: Brown
+height: 1.22
+weight: 36.0
+isVisible: true
+}
+Character {
+userId: df781120-707f-401e-9042-2d2815436a6a
+name: Gandalf the Grey
+age: 2019
+weapon: STAFF
+hairColor: Grey
+eyeColor: Grey
+height: 1.80
+weight: 75.0
+isVisible: true
+}
+Character {
+userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Boromir
+age: 41
+weapon: SWORD
+hairColor: Brown
+eyeColor: Green
+height: 1.85
+weight: 90.0
+isVisible: true
+}
+Character {
+userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Gimli
+age: 139
+weapon: BATTLEAXE
+hairColor: Red
+eyeColor: Brown
+height: 1.45
+weight: 78.0
+isVisible: true
+}
+Character {
+userId: df781120-707f-401e-9042-2d2815436a6a
+name: Galadriel
+age: 7000
+weapon: BOOK
+hairColor: Blonde
+eyeColor: Blue
+height: 1.80
+weight: 60.0
+isVisible: true
+}
+Character {
+userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Legolas
+age: 2931
+weapon: BOW
+hairColor: Blonde
+eyeColor: Blue
+height: 1.83
+weight: 70.0
+isVisible: true
+}
+Character {
+userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Aragorn
+age: 87
+weapon: SWORD
+weapon: DAGGER
+hairColor: Brown
+eyeColor: Grey
+height: 1.93
+weight: 85.0
+isVisible: true
+}
+Character {
+userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
+name: Sauron
+age: 5436
+weapon: WARHAMMER
+hairColor: Black
+eyeColor: Red
+height: 2.50
+weight: 120.0
+isVisible: true
+}
+Character {
+userId: df781120-707f-401e-9042-2d2815436a6a
+name: Saruman
+age: 2019
+weapon: STAFF
+hairColor: White
+eyeColor: Blue
+height: 1.90
+weight: 80.0
+isVisible: true
+}
