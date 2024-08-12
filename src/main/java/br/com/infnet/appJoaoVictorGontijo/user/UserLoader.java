@@ -2,62 +2,82 @@ package br.com.infnet.appJoaoVictorGontijo.user;
 
 import br.com.infnet.appJoaoVictorGontijo.FileLoader;
 import br.com.infnet.appJoaoVictorGontijo.character.Character;
-import br.com.infnet.appJoaoVictorGontijo.character.CharacterLoader;
+import br.com.infnet.appJoaoVictorGontijo.character.CharacterService;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class UserLoader implements FileLoader {
 
+    private final UserService userService;
+    private final CharacterService characterService;
+
+    public UserLoader(UserService userService, CharacterService characterService) {
+        this.userService = userService;
+        this.characterService = characterService;
+    }
+
     @Override
-    public List<User> loadFromFile() {
-        String filePath = "src/main/resources/users.txt";
-        List<User> users = new ArrayList<>();
-        CharacterLoader characterLoader = new CharacterLoader();
-        List<Character> allCharacters = characterLoader.loadFromFile();
+    public void loadFromFile() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("src/main/resources/users.txt"));
+        User user = null;
+        boolean isParsingCharacters = false;
+        List<UUID> characterIds = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            User user = new User();
-            List<Character> characters = new ArrayList<>();
+        for (String line : lines) {
+            line = line.trim();
 
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("User {")) {
-                    user = new User();
-                    characters = new ArrayList<>();
-                } else if (line.startsWith("id:")) {
-                    UUID userId = UUID.fromString(line.split(":")[1].trim());
-                    characters = filterCharactersByUserId(allCharacters, userId);
-                } else if (line.startsWith("name:")) {
-                    user.setName(line.split(":")[1].trim());
-                } else if (line.startsWith("age:")) {
-                    user.setAge(Integer.parseInt(line.split(":")[1].trim()));
-                } else if (line.startsWith("email:")) {
-                    user.setEmail(line.split(":")[1].trim());
-                } else if (line.startsWith("}")) {
-                    user.setCharacters(characters);
-                    users.add(user);
+            if (line.startsWith("User {")) {
+                user = new User();
+            } else if (line.startsWith("id:")) {
+                user.setId(UUID.fromString(line.split(":")[1].trim()));
+            } else if (line.startsWith("name:")) {
+                user.setName(line.split(":")[1].trim());
+            } else if (line.startsWith("age:")) {
+                user.setAge(Integer.parseInt(line.split(":")[1].trim()));
+            } else if (line.startsWith("email:")) {
+                user.setEmail(line.split(":")[1].trim());
+            } else if (line.startsWith("characters:")) {
+                isParsingCharacters = true;
+            } else if (isParsingCharacters) {
+                if (line.equals("]")) {
+                    isParsingCharacters = false;
+                    associateCharactersToUser(user, characterIds);
+                    characterIds.clear();
+                } else {
+                    UUID characterId = UUID.fromString(line.replace("\"", "").replace(",", "").trim());
+                    characterIds.add(characterId);
+                }
+            } else if (line.startsWith("}")) {
+                if (user != null) {
+                    userService.add(user);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
-        System.out.println("--- Inicio UserLoader ---");
-        users.forEach(System.out::println);
-        System.out.println("--- Fim UserLoader ---");
-        return users;
     }
 
-    private List<Character> filterCharactersByUserId(List<Character> characters, UUID userId) {
-        return characters.stream()
-                .filter(it -> it.getUserId().equals(userId))
-                .collect(Collectors.toList());
+    private void associateCharactersToUser(User user, List<UUID> characterIds) {
+        if (user != null) {
+            for (UUID characterId : characterIds) {
+                Character character = characterService.getCharacterById(characterId);
+                if (character != null) {
+                    user.getCharacters().add(character);
+                }
+            }
+        }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (User user : userService.get()) {
+            sb.append(user.toString()).append("\n");
+        }
+        return sb.toString();
+    }
+
 }

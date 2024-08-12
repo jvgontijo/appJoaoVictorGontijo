@@ -1,8 +1,8 @@
 package br.com.infnet.appJoaoVictorGontijo;
 
-import java.util.List;
+import java.io.IOException;
 
 public interface FileLoader {
 
-    List<?> loadFromFile();
+    void loadFromFile() throws IOException;
 }

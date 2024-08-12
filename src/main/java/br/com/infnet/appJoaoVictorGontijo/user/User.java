@@ -5,6 +5,7 @@ import br.com.infnet.appJoaoVictorGontijo.person.Person;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,7 @@ public class User extends Person {
 
     private String email;
 
-    private List<Character> characters;
+    private List<Character> characters = new ArrayList<>();
 
     public Character createCharacter() {
         return new Character();
@@ -26,10 +27,12 @@ public class User extends Person {
     @Override
     public String toString() {
         return "User { " + "\n" +
-                "name: " + this.getName() +
+                "id: " + this.getId() +
+                ", name: " + this.getName() +
                 ", age: " + this.getAge() +
-                ", email: '" + email + ",\n" +
-                "characters: " + characters +
+                ", email: " + this.email +
+                ", quantidade de personagens: " + this.characters.size() + ",\n" +
+                "personagens: " + this.characters +
                 "}" + "\n";
     }
 }
