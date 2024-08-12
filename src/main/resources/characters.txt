@@ -1,15 +1,5 @@
 Character {
-userId: df781120-707f-401e-9042-2d2815436a6a
-name: Frodo Baggins
-age: 50
-weapon: DAGGER
-hairColor: Brown
-eyeColor: Blue
-height: 1.20
-weight: 33.0
-isVisible: true
-}
-Character {
+id: aa5497df-e9e6-4d77-b613-eef9b2cd192d
 userId: df781120-707f-401e-9042-2d2815436a6a
 name: Samwise Gamgee
 age: 38
@@ -21,6 +11,7 @@ weight: 36.0
 isVisible: true
 }
 Character {
+id: 6c327c71-6ba0-4ab9-99e0-229b15f42b27
 userId: df781120-707f-401e-9042-2d2815436a6a
 name: Gandalf the Grey
 age: 2019
@@ -32,6 +23,7 @@ weight: 75.0
 isVisible: true
 }
 Character {
+id: c7270c1b-f5b4-4531-b5d0-5fa33217afa6
 userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Boromir
 age: 41
@@ -43,6 +35,7 @@ weight: 90.0
 isVisible: true
 }
 Character {
+id: 028113e5-5428-4afa-99d6-0a1c6329df02
 userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Gimli
 age: 139
@@ -54,6 +47,7 @@ weight: 78.0
 isVisible: true
 }
 Character {
+id: 7de9df80-dbef-4a3d-a0ac-be376fc1eef9
 userId: df781120-707f-401e-9042-2d2815436a6a
 name: Galadriel
 age: 7000
@@ -65,6 +59,7 @@ weight: 60.0
 isVisible: true
 }
 Character {
+id: 7043a20c-4603-44d4-a9aa-ad355ad020de
 userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Legolas
 age: 2931
@@ -76,6 +71,7 @@ weight: 70.0
 isVisible: true
 }
 Character {
+id: 640184b4-0a0b-4d68-830b-bcc564d6be1b
 userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Aragorn
 age: 87
@@ -88,6 +84,7 @@ weight: 85.0
 isVisible: true
 }
 Character {
+id: 23659bc3-5c13-4991-a772-3c638d53c560
 userId: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Sauron
 age: 5436
@@ -99,6 +96,7 @@ weight: 120.0
 isVisible: true
 }
 Character {
+id: 02e18b5e-778e-4444-9d23-95e054039cee
 userId: df781120-707f-401e-9042-2d2815436a6a
 name: Saruman
 age: 2019

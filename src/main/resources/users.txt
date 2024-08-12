@@ -3,13 +3,23 @@ id: df781120-707f-401e-9042-2d2815436a6a
 name: John Doe
 age: 30
 email: john@example.com
-character: character1.txt
-character: character2.txt
+characters: [
+"6c327c71-6ba0-4ab9-99e0-229b15f42b27",
+"7de9df80-dbef-4a3d-a0ac-be376fc1eef9",
+"02e18b5e-778e-4444-9d23-95e054039cee",
+"aa5497df-e9e6-4d77-b613-eef9b2cd192d"
+]
 }
 User {
 id: 69fb03e5-91a6-4cec-8df3-46cd0b3cbb86
 name: Jane Smith
 age: 25
 email: jane@example.com
-character: character3.txt
+characters: [
+"c7270c1b-f5b4-4531-b5d0-5fa33217afa6",
+"028113e5-5428-4afa-99d6-0a1c6329df02",
+"7043a20c-4603-44d4-a9aa-ad355ad020de",
+"640184b4-0a0b-4d68-830b-bcc564d6be1b",
+"23659bc3-5c13-4991-a772-3c638d53c560"
+]
 }
