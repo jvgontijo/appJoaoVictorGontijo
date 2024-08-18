@@ -10,6 +10,10 @@ public class CharacterService {
         characterMap.put(character.getId(), character);
     }
 
+    public void remove(UUID id) {
+        characterMap.remove(id);
+    }
+
     public List<Character> get() {
         return new ArrayList<>(characterMap.values());
     }
