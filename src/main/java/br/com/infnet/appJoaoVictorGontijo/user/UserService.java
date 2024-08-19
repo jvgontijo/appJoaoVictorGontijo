@@ -1,7 +1,10 @@
 package br.com.infnet.appJoaoVictorGontijo.user;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
 
+@Repository
 public class UserService {
 
     private final Map<UUID, User> userMap = new HashMap<>();

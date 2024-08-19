@@ -1,7 +1,10 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
 
+@Repository
 public class CharacterService {
 
     private final Map<UUID, Character> characterMap = new HashMap<>();

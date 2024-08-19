@@ -3,6 +3,7 @@ package br.com.infnet.appJoaoVictorGontijo.user;
 import br.com.infnet.appJoaoVictorGontijo.FileLoader;
 import br.com.infnet.appJoaoVictorGontijo.character.Character;
 import br.com.infnet.appJoaoVictorGontijo.character.CharacterService;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class UserLoader implements FileLoader {
 
     private final UserService userService;

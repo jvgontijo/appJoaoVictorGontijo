@@ -4,27 +4,28 @@ import br.com.infnet.appJoaoVictorGontijo.character.CharacterLoader;
 import br.com.infnet.appJoaoVictorGontijo.character.CharacterService;
 import br.com.infnet.appJoaoVictorGontijo.user.UserLoader;
 import br.com.infnet.appJoaoVictorGontijo.user.UserService;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-public class Loader {
+@Component
+public class Loader implements ApplicationRunner {
 
-    public static void main(String[] args) throws IOException {
-        UserService userService = new UserService();
-        CharacterService characterService = new CharacterService();
+    private final UserLoader userLoader;
 
-        UserLoader userLoader = new UserLoader(userService, characterService);
-        CharacterLoader characterLoader = new CharacterLoader(characterService);
+    private final CharacterLoader characterLoader;
 
+    public Loader(UserLoader userLoader, CharacterLoader characterLoader) {
+        this.userLoader = userLoader;
+        this.characterLoader = characterLoader;
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
         characterLoader.loadFromFile();
         userLoader.loadFromFile();
-
-        System.out.println(" --- Inicio UserLoader ---");
-        System.out.println(userLoader);
-        System.out.println(" --- Fim UserLoader ---");
-
-        System.out.println(" --- Inicio Character Loading ---");
-        System.out.println(characterLoader);
-        System.out.println(" --- Fim Character Loading ---");
     }
+
 }

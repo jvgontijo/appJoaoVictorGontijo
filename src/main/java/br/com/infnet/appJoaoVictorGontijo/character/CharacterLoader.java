@@ -1,6 +1,7 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
 import br.com.infnet.appJoaoVictorGontijo.FileLoader;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class CharacterLoader implements FileLoader {
 
     private final CharacterService characterService;
