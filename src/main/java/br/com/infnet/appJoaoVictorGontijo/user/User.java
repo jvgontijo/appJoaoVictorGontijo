@@ -2,7 +2,9 @@ package br.com.infnet.appJoaoVictorGontijo.user;
 
 import br.com.infnet.appJoaoVictorGontijo.character.Character;
 import br.com.infnet.appJoaoVictorGontijo.person.Person;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +21,11 @@ public class User extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Email(message = "Email should be valid")
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Character> characters = new ArrayList<>();
 
     public Character createCharacter() {

@@ -1,6 +1,7 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
 import br.com.infnet.appJoaoVictorGontijo.person.Person;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Character extends Person {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UUID userId;
 
     @ElementCollection
