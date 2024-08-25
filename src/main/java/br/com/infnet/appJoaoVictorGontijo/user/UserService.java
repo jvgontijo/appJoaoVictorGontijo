@@ -1,27 +1,37 @@
 package br.com.infnet.appJoaoVictorGontijo.user;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Repository
+@Service
 public class UserService {
 
-    private final Map<UUID, User> userMap = new HashMap<>();
+    private final UserRepository repository;
+
+    @Autowired
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public void add(User user) {
-        userMap.put(user.getId(), user);
+        this.repository.save(user);
     }
 
     public void remove(UUID id) {
-        userMap.remove(id);
+        Optional<User> user = this.repository.findById(id);
+        user.ifPresent(this.repository::delete);
     }
 
     public List<User> get() {
-        return new ArrayList<>(userMap.values());
+        return this.repository.findAll();
     }
 
     public User getUserById(UUID id) {
-        return userMap.get(id);
+        Optional<User> user = this.repository.findById(id);
+        return Optional.of(user)
+                .get()
+                .orElseThrow(() -> new RuntimeException(String.format("User [ ID: '%s' ] not found", id)));
     }
 }
