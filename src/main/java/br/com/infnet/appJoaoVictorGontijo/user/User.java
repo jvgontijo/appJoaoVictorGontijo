@@ -2,18 +2,26 @@ package br.com.infnet.appJoaoVictorGontijo.user;
 
 import br.com.infnet.appJoaoVictorGontijo.character.Character;
 import br.com.infnet.appJoaoVictorGontijo.person.Person;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
+@Entity
 public class User extends Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     private String email;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Character> characters = new ArrayList<>();
 
     public Character createCharacter() {
