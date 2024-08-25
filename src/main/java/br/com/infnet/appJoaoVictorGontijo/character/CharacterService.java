@@ -1,6 +1,7 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,12 +11,8 @@ import static java.lang.String.format;
 @Service
 public class CharacterService {
 
-    private final CharacterRepository repository;
-
     @Autowired
-    public CharacterService(CharacterRepository repository) {
-        this.repository = repository;
-    }
+    private CharacterRepository repository;
 
     public void add(Character character) {
         this.repository.save(character);
@@ -27,7 +24,7 @@ public class CharacterService {
     }
 
     public List<Character> get() {
-        return this.repository.findAll();
+        return this.repository.findAll(Sort.by("name").ascending());
     }
 
     public Character getCharacterById(UUID id) {
