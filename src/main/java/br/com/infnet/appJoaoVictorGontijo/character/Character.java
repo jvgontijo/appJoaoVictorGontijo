@@ -1,6 +1,8 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
 import br.com.infnet.appJoaoVictorGontijo.person.Person;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,16 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static jakarta.persistence.EnumType.STRING;
+
 @Getter
 @Setter
 public class Character extends Person {
 
     private final LocalDate creationDate = LocalDate.now();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UUID userId;
 
+    @ElementCollection
+    @CollectionTable(name = "character_weapons", joinColumns = @JoinColumn(name = "character_id"))
+    @Enumerated(STRING)
     private List<Weapon> weapons = new ArrayList<>();
 
+    @Embedded
     private Appearance appearance = new Appearance();
 
     private boolean isBrought = false;

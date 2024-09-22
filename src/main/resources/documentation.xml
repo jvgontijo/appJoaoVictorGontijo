@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apiDocumentation>
+    <apiInfo>
+        <title>RPG Character Management API</title>
+        <version>1.0</version>
+        <description>
+            Esta API permite gerenciar usuários e personagens para um jogo de RPG.
+            Inclui operações para criar, excluir, obter lista e obter detalhes de usuários e personagens.
+        </description>
+    </apiInfo>
+
+    <endpoints>
+        <!-- User Endpoints -->
+        <endpoint>
+            <path>/users</path>
+            <method>POST</method>
+            <description>Cria um novo usuário.</description>
+            <requestBody>
+                <contentType>application/json</contentType>
+                <example>
+                    {
+                    "name": "John Doe",
+                    "age": 30,
+                    "email": "john@example.com",
+                    "characters": []
+                    }
+                </example>
+            </requestBody>
+            <response>
+                <statusCode>201</statusCode>
+                <description>Usuário criado com sucesso.</description>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/users/{id}</path>
+            <method>DELETE</method>
+            <description>Exclui um usuário pelo ID.</description>
+            <pathParam>
+                <name>id</name>
+                <description>ID do usuário a ser excluído.</description>
+            </pathParam>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Usuário excluído com sucesso.</description>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/users</path>
+            <method>GET</method>
+            <description>Obtém a lista de todos os usuários.</description>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Lista de usuários retornada com sucesso.</description>
+                <example>
+                    [
+                    {
+                    "id": "df781120-707f-401e-9042-2d2815436a6a",
+                    "name": "John Doe",
+                    "age": 30,
+                    "email": "john@example.com",
+                    "characters": []
+                    }
+                    ]
+                </example>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/users/{id}</path>
+            <method>GET</method>
+            <description>Obtém os detalhes de um usuário específico pelo ID.</description>
+            <pathParam>
+                <name>id</name>
+                <description>ID do usuário a ser recuperado.</description>
+            </pathParam>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Detalhes do usuário retornados com sucesso.</description>
+                <example>
+                    {
+                    "id": "df781120-707f-401e-9042-2d2815436a6a",
+                    "name": "John Doe",
+                    "age": 30,
+                    "email": "john@example.com",
+                    "characters": []
+                    }
+                </example>
+            </response>
+        </endpoint>
+
+        <!-- Character Endpoints -->
+        <endpoint>
+            <path>/characters</path>
+            <method>POST</method>
+            <description>Cria um novo personagem.</description>
+            <requestBody>
+                <contentType>application/json</contentType>
+                <example>
+                    {
+                    "name": "Hero",
+                    "age": 25,
+                    "weapons": ["SWORD"],
+                    "appearance": {
+                    "hairColor": "Black",
+                    "eyeColor": "Blue",
+                    "height": 180,
+                    "weight": 75,
+                    "isVisible": true
+                    }
+                    }
+                </example>
+            </requestBody>
+            <response>
+                <statusCode>201</statusCode>
+                <description>Personagem criado com sucesso.</description>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/characters/{id}</path>
+            <method>DELETE</method>
+            <description>Exclui um personagem pelo ID.</description>
+            <pathParam>
+                <name>id</name>
+                <description>ID do personagem a ser excluído.</description>
+            </pathParam>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Personagem excluído com sucesso.</description>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/characters</path>
+            <method>GET</method>
+            <description>Obtém a lista de todos os personagens.</description>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Lista de personagens retornada com sucesso.</description>
+                <example>
+                    [
+                    {
+                    "id": "6c327c71-6ba0-4ab9-99e0-229b15f42b27",
+                    "name": "Hero",
+                    "age": 25,
+                    "weapons": ["SWORD"],
+                    "appearance": {
+                    "hairColor": "Black",
+                    "eyeColor": "Blue",
+                    "height": 180,
+                    "weight": 75,
+                    "isVisible": true
+                    }
+                    }
+                    ]
+                </example>
+            </response>
+        </endpoint>
+
+        <endpoint>
+            <path>/characters/{id}</path>
+            <method>GET</method>
+            <description>Obtém os detalhes de um personagem específico pelo ID.</description>
+            <pathParam>
+                <name>id</name>
+                <description>ID do personagem a ser recuperado.</description>
+            </pathParam>
+            <response>
+                <statusCode>200</statusCode>
+                <description>Detalhes do personagem retornados com sucesso.</description>
+                <example>
+                    {
+                    "id": "6c327c71-6ba0-4ab9-99e0-229b15f42b27",
+                    "name": "Hero",
+                    "age": 25,
+                    "weapons": ["SWORD"],
+                    "appearance": {
+                    "hairColor": "Black",
+                    "eyeColor": "Blue",
+                    "height": 180,
+                    "weight": 75,
+                    "isVisible": true
+                    }
+                    }
+                </example>
+            </response>
+        </endpoint>
+
+    </endpoints>
+</apiDocumentation>

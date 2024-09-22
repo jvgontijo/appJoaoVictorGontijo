@@ -1,20 +1,36 @@
 package br.com.infnet.appJoaoVictorGontijo.character;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
+import static java.lang.String.format;
+
+@Service
 public class CharacterService {
 
-    private final Map<UUID, Character> characterMap = new HashMap<>();
+    @Autowired
+    private CharacterRepository repository;
 
     public void add(Character character) {
-        characterMap.put(character.getId(), character);
+        this.repository.save(character);
+    }
+
+    public void remove(UUID id) {
+        Optional<Character> character = this.repository.findById(id);
+        character.ifPresent(this.repository::delete);
     }
 
     public List<Character> get() {
-        return new ArrayList<>(characterMap.values());
+        return this.repository.findAll(Sort.by("name").ascending());
     }
 
     public Character getCharacterById(UUID id) {
-        return characterMap.get(id);
+        Optional<Character> character = this.repository.findById(id);
+        return Optional.of(character)
+                .get()
+                .orElseThrow(() -> new RuntimeException(format("Character [ ID: '%s' ] not found!", id)));
     }
 }
